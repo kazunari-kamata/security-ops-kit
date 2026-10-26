@@ -8,3 +8,6 @@ def test_checklist() -> None:
     assert result.returncode == 0 and "証跡" in result.stdout
 def test_invalid_phase() -> None: assert run("scripts/generate_security_checklist.py", "unknown").returncode != 0
 def test_templates() -> None: assert run("scripts/validate_templates.py", "templates").returncode == 0
+def test_sla_slo_checklist() -> None:
+    result = run("scripts/generate_security_checklist.py", "sla-slo-review")
+    assert result.returncode == 0 and "除外条件" in result.stdout
